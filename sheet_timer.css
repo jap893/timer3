@@ -1,0 +1,330 @@
+html,body{
+    height: 100%;
+    margin: 0;
+}
+/* 背景の指定 */
+.background{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    justify-content: center;    /* 横中央寄せ */
+    align-items: center;    /* 縦中央寄せ */ 
+    width:  100%;    /* 横幅=画面いっぱい */
+    height: 100%;   /* 高さ=画面いっぱい */
+    background-color: #b0c4de /* 背景色=明るい灰みの青紫系の色*/
+}
+/* タイマーの設定エリア */
+.inputTimer{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    align-items: center; /* 横中央寄せ */
+    width: 400px;
+    height: 380px;
+    background-color: transparent;  /* 背景色=透明 */
+}
+/* タイマー設定の見出し */
+.inputTimer-index{
+    width: auto;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16pt;
+    font-weight: bold;
+    color: #2b2b2b;
+}
+.inputTimer-row{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    justify-content: center;
+    width: 100%;    /* 横幅=inputTimerと同じ */
+    gap: 4px;
+}
+.inputTimer-row-input{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    width: 128px;
+}
+.inputTimer-row-input-timeButton{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    justify-content: center;
+    align-items: center; 
+    width: 128px;
+    height: 48px;
+    background-color:#2b2b2b;
+    border-radius: 36px; /* 角を丸くする（半径6px）*/
+    position: relative; /* ::before のための基準 */
+}
+.inputTimer-row-input-timeButton img{
+    width: 32px;
+    height: 32px;
+}
+.inputTimer-row-input-number{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    justify-content: center;
+    align-items: center; 
+    width: 128px;
+    height: 160px;
+    margin: 4px 0;
+    font-family: 'Impact', 'Arial Black', 'Helvetica Neue', Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 100pt;
+    color: #fff;
+    background-color: #000;
+}
+.inputTimer-row-inputUnit{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    justify-content: flex-end;
+    width:   64px;
+    height: 264px;
+    margin: 4px 0;
+    font-weight: bold;
+    font-size:64pt;
+    color: #000;
+    padding-left: 10px;
+    padding-bottom: 40px;
+    background-color: transparent;
+}
+.commandButton{
+    /* 外側フレーム部 */
+    box-sizing: content-box;
+    background: #fff;
+    padding: 2px;
+    width: 328px;
+    height: 48px;
+    display: flex;
+    margin: 6px auto;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px rgba( 3,3,3,0.4);
+}
+.commandButton > .inner-Button {
+    box-sizing: content-box;
+    display:flex;
+    flex-flow:row;
+    justify-content:center;
+    align-items:center;
+    background-color: #7b7c84;
+    border-radius: 4px;/*内側の枠にborder-radius*/
+    width: 328px;
+    height: 48px;
+    text-align: center;
+    margin: auto;
+}
+.commandButtonLabel{
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(3,3,3,0.3);
+    height: 46px;
+    line-height: 46px;
+}
+.commandButtonLabel img{
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+}
+
+.menuButton > .buttonBlue{
+    background-color: #3D94F6;
+}
+.commandButton > .buttonDark{
+    background: #001b34;
+}
+.soundSelection {
+    margin: 20px auto;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 25px;
+    color: #333;
+}
+.soundSelection label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.soundSelection select {
+    padding: 5px 5px;
+    font-size: 16px;
+    border: 5px solid #000;
+    border-radius: 4px;
+}
+.overlay{
+    display: none;
+}
+#overlay-countdownTimer{
+    box-sizing: border-box;
+    position: fixed; /* スクロールに関係なく画面全体に表示 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999; /* 他の要素の上に表示 */
+}
+.overlay-modalWindow{
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 720px;
+    height: 400px;
+    background: linear-gradient(135deg, green, orange);
+    box-shadow: 6px 6px 6px 0px rgba(0, 0, 0, 0.9); 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 中央に配置 */
+    z-index: 1201;
+}
+.overlay-modalWindow-BG{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.countdownTimer{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 640px;
+    height: 300px;
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 中央に配置 */
+}
+.countdownTimer-index{
+    width: 100%;
+    height: 64px;
+    color: #ffa50e;
+    font-size: 16pt;
+    font-weight: bold;
+    padding-left: 16px;
+}
+.countdownTimer-timer{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.countdownTimer-timer-minutes{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    justify-content: flex-end;
+    align-items: center; 
+    width: 172px;
+    height: 160px;
+    font-family: 'Arial Black', 'Helvetica Neue', Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 100pt;
+    color: #fff;
+    background-color: transparent;
+}
+.countdownTimer-timer-seconds{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    justify-content: flex-end;
+    align-items: center; 
+    width: 172px;
+    height: 160px;
+    font-family: 'Arial Black', 'Helvetica Neue', Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 100pt;
+    color: #fff;
+    background-color: transparent;
+}
+.countdownTimer-timer-milliseconds{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    justify-content: flex-end;
+    align-items: center; 
+    width: 120px;
+    height: 160px;
+    font-family: 'Arial Black', 'Helvetica Neue', Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 80pt;
+    color: #fff;
+    background-color: transparent;
+}
+.countdownTimer-timer-unit{
+    box-sizing: border-box; /* 線や余白も指定したサイズに収める */
+    display: flex;  /* Flexboxを指定 */
+    flex-direction: column; /* Flexboxの並び方向を指定(縦方向) */
+    justify-content: flex-end;
+    align-items: center; 
+    width: 60px;
+    height: 160px;
+    font-size: 30pt;
+    font-weight: bold;
+    color: #fff;
+}
+.countdownTimer-button{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 76px;
+
+}
+.countdownTimer-button-button{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 48px;
+    color: orange;
+    text-shadow: 0 0 4px orange;
+    border: orange 2px solid;
+    border-radius: 4px;
+    box-shadow: 0 0 4px orange;
+    margin: 0 8px;
+    cursor: pointer;
+}
+.dummySpace{
+    display: flex;
+    flex:1;    
+}
+.newButton {
+    background-color: #ffd700;/* いい感じの色*/
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+}
+#newButton:hover {
+    background-color: #fffacd; 少し暗い緑 */
+    transform: scale(2.0; /* ホバー時に少し拡大 */
+}
+.countdownQuit{
+    visibility: hidden;
+}
+.blink {
+	animation: blinking 1s ease-in-out infinite alternate;
+}
+@keyframes blinking {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
